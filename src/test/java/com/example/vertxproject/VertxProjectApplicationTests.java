@@ -1,5 +1,6 @@
 package com.example.vertxproject;
 
+import com.example.vertxproject.verticles.HttpServerVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpClient;
 import io.vertx.ext.unit.Async;
@@ -10,7 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 
 @RunWith(VertxUnitRunner.class)

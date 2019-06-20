@@ -1,10 +1,11 @@
-package com.example.vertxproject;
+package com.example.vertxproject.verticles;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.http.HttpServer;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
+import io.vertx.ext.web.handler.StaticHandler;
 
 public class HttpServerVerticleWeb extends AbstractVerticle {
     private HttpServer httpServer = null;
@@ -17,6 +18,8 @@ public class HttpServerVerticleWeb extends AbstractVerticle {
             rc.response().putHeader("content-type", "text/html")
                          .end("<pre><h1>Hello from my first Vert.x 3 app</h1> </pre> ");
         });
+        router.route("/assets/*")
+                .handler(StaticHandler.create("assets"));
 
         httpServer = vertx.createHttpServer();
 

@@ -1,4 +1,4 @@
-package com.example.vertxproject;
+package com.example.vertxproject.verticles;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;

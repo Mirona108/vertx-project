@@ -1,5 +1,9 @@
 package com.example.vertxproject;
 
+import com.example.vertxproject.verticles.BasicVerticle;
+import com.example.vertxproject.verticles.EventBusReceiverVerticle;
+import com.example.vertxproject.verticles.EventBusSenderVerticle;
+import com.example.vertxproject.verticles.HttpServerVerticleWeb;
 import io.vertx.core.Handler;
 import io.vertx.core.Vertx;
 import org.springframework.boot.SpringApplication;
