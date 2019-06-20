@@ -15,7 +15,8 @@ public class VertxProjectApplication {
         Vertx vertx = Vertx.vertx();
         vertx.deployVerticle(new BasicVerticle());
 
-        vertx.deployVerticle(new HttpServerVerticle());
+        vertx.deployVerticle(new HttpServerVerticleWeb());
+
         //sendReceiveMessages(vertx);
 
         //setTimers();

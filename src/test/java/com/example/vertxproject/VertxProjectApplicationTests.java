@@ -1,6 +1,7 @@
 package com.example.vertxproject;
 
 import io.vertx.core.Vertx;
+import io.vertx.core.http.HttpClient;
 import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
 import io.vertx.ext.unit.junit.VertxUnitRunner;
@@ -10,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 
 @RunWith(VertxUnitRunner.class)
 @SpringBootTest
@@ -32,8 +34,8 @@ public class VertxProjectApplicationTests {
     @Test
     public void testMyApplication(TestContext context) {
         final Async async = context.async();
-
-        vertx.createHttpClient().getNow(8081, "localhost", "/",
+        HttpClient httpClient = vertx.createHttpClient();
+        httpClient.getNow(8081, "localhost", "/",
                 response ->
                         response.handler(body -> {
                             context.assertTrue(body.toString().contains("Hello"));
