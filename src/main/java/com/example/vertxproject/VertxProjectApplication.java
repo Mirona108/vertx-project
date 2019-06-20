@@ -15,27 +15,34 @@ public class VertxProjectApplication {
         Vertx vertx = Vertx.vertx();
         vertx.deployVerticle(new BasicVerticle());
 
+        vertx.deployVerticle(new HttpServerVerticle());
+        //sendReceiveMessages(vertx);
+
+        //setTimers();
+;    }
+
+    public static void sendReceiveMessages(Vertx vertx) throws InterruptedException {
         vertx.deployVerticle(new EventBusReceiverVerticle("R1"));
         vertx.deployVerticle(new EventBusReceiverVerticle("R2"));
 
         Thread.sleep(3000);
         vertx.deployVerticle(new EventBusSenderVerticle());
+    }
 
-        setTimers(vertx);
-;    }
+    public static void setTimers() throws InterruptedException{
 
-    public static void setTimers(Vertx vertx) throws InterruptedException{
+        Vertx vertx = Vertx.vertx();
         long timerOneID = vertx.setTimer(2500, new Handler<Long>() {
             @Override
-            public void handle(Long time) {
-                System.out.println("One timer fired " + time);
+            public void handle(Long index) {
+                System.out.println("One timer fired " + index);
             }
         });
 
         long timerPeriodID = vertx.setPeriodic(2000, new Handler<Long>() {
             @Override
-            public void handle(Long time) {
-                System.out.println("Period timer fired: " + time);
+            public void handle(Long index) {
+                System.out.println("Period timer fired: " + index);
             }
         });
 
